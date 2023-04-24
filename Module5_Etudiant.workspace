@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="Module5_Etudiant" Database="" Version="10000">
+  <VirtualDirectory Name="Exemples_Cours">
+    <Project Name="Passage_Argument_Fonction" Path="Passage_Argument_Fonction/Passage_Argument_Fonction.project" Active="No"/>
+    <Project Name="Tableau_dynamique" Path="Tableau_dynamique/Tableau_dynamique.project" Active="No"/>
+    <Project Name="Pointeurs" Path="Pointeurs/Pointeurs.project" Active="No"/>
+    <Project Name="Test_DS1631" Path="Test_DS1631/Test_DS1631.project" Active="No"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="Template">
+    <Project Name="Template_I2C-GPIO" Path="Template_I2C-GPIO/Template_I2C-GPIO.project" Active="No"/>
+  </VirtualDirectory>
+  <Project Name="Executables_et_Bibliothèques" Path="Executables_et_Bibliothèques/Executables_et_Bibliothèques.project" Active="No"/>
+  <VirtualDirectory Name="Sujets-TP">
+    <Project Name="Sujet-TP1-1_Framework" Path="Sujet-TP1-1_Framework/Sujet-TP1-1_Framework.project" Active="No"/>
+    <Project Name="Sujet-TP1-2_Fonctions-I2C" Path="Sujet-TP1-2_Fonctions-I2C/Sujet-TP1-2_Fonctions-I2C.project" Active="No"/>
+    <Project Name="Sujet-TP2_Classe-DS1631" Path="Sujet-TP2_Classe-DS1631/Sujet-TP2_Classe-DS1631.project" Active="No"/>
+    <Project Name="Sujet-TP3_Lib_AccesI2C" Path="Sujet-TP3_Lib_AccesI2C/Sujet-TP3_Lib_AccesI2C.project" Active="No"/>
+  </VirtualDirectory>
+  <Project Name="the_mthr_project" Path="the_mthr_project/the_mthr_project.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="Executables_et_Bibliothèques" ConfigName="Debug"/>
+      <Project Name="Passage_Argument_Fonction" ConfigName="Debug"/>
+      <Project Name="Tableau_dynamique" ConfigName="Debug"/>
+      <Project Name="Pointeurs" ConfigName="Debug"/>
+      <Project Name="Test_DS1631" ConfigName="Debug"/>
+      <Project Name="Sujet-TP1-1_Framework" ConfigName="Debug"/>
+      <Project Name="Sujet-TP1-2_Fonctions-I2C" ConfigName="Debug"/>
+      <Project Name="Sujet-TP2_Classe-DS1631" ConfigName="Debug"/>
+      <Project Name="Sujet-TP3_Lib_AccesI2C" ConfigName="Debug"/>
+      <Project Name="Template_I2C-GPIO" ConfigName="Debug"/>
+      <Project Name="the_mthr_project" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="Executables_et_Bibliothèques" ConfigName="Debug"/>
+      <Project Name="Passage_Argument_Fonction" ConfigName="Release"/>
+      <Project Name="Tableau_dynamique" ConfigName="Release"/>
+      <Project Name="Pointeurs" ConfigName="Release"/>
+      <Project Name="Test_DS1631" ConfigName="Release"/>
+      <Project Name="Sujet-TP1-1_Framework" ConfigName="Release"/>
+      <Project Name="Sujet-TP1-2_Fonctions-I2C" ConfigName="Release"/>
+      <Project Name="Sujet-TP2_Classe-DS1631" ConfigName="Release"/>
+      <Project Name="Sujet-TP3_Lib_AccesI2C" ConfigName="Release"/>
+      <Project Name="Template_I2C-GPIO" ConfigName="Release"/>
+      <Project Name="the_mthr_project" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>
