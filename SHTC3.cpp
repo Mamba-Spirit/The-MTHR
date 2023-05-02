@@ -1,34 +1,28 @@
 #include "SHTC3.h"
 
-SHTC3::SHTC3(AccesI2C *I2C,const unsigned char &adresse)
-{
+SHTC3::SHTC3(AccesI2C *I2C,const unsigned char &adresse){
     m_I2C=I2C;
     m_adresse=adresse;
 }
 
-SHTC3::~SHTC3()
-{
+SHTC3::~SHTC3(){
+    
 }
 
-unsigned char SHTC3::GetMinAddress()
-{
+unsigned char SHTC3::GetMinAddress(){
     return ADDRESS_MIN;
-
 }
 
-unsigned char SHTC3::GetMaxAddress()
-{
+unsigned char SHTC3::GetMaxAddress(){
     return ADDRESS_MAX;
-
 }
 
-bool SHTC3::ValidateAddress(const unsigned char &adresse)
-{
+bool SHTC3::ValidateAddress(const unsigned char &adresse){
+
     return ((adresse>= GetMinAddress()) && (adresse<= GetMaxAddress()));
 }
 
-bool SHTC3::Wake_up()
-{
+bool SHTC3::Wake_up(){
     bool retour = true;
     vector<unsigned char> data;
     data.push_back(0x35);
@@ -44,8 +38,7 @@ bool SHTC3::Wake_up()
     return retour;
 }
 
-
-bool SHTC3::Read_the_temperature(){
+bool SHTC3::Read_the_temperature(float &temperature){
 
     bool retour= true;
     // envoie de la commande pour le prelevement de la temperature//
@@ -58,7 +51,7 @@ bool SHTC3::Read_the_temperature(){
         retour = false;
     }
 //************************************************************************************************
-    sleep(15000); //On donne le temps au capteur de faire le prelevement//
+    usleep(150000); //On donne le temps au capteur de faire le prelevement//
     
     vector<unsigned char> temp(3);
     
@@ -68,14 +61,16 @@ bool SHTC3::Read_the_temperature(){
     }
     
     if(retour){
-        unsigned int temperature_preleve = (temp[0]*256)+temp[1];
-        int temperature_reel = 45+(175*(temperature_preleve/65536));
+       
+        temperature = Temperature_Conversion(temp[0], temp[1]);
     }
     
     return retour;
 }
-bool SHTC3::ReadHumidity(){
-        bool retour= true;
+
+bool SHTC3::ReadHumidity(float &relative_humidity){
+    
+    bool retour= true;
     // envoie de la commande pour le prelevement d'humidité//
 //************************************************************************************************
     vector<unsigned char> data;
@@ -86,7 +81,7 @@ bool SHTC3::ReadHumidity(){
         retour = false;
     }
 //************************************************************************************************
-    sleep(15000); //On donne le temps au capteur de faire le prelevement//
+    usleep(150000); //On donne le temps au capteur de faire le prelevement//
     
     vector<unsigned char> humidity(3);
     
@@ -96,20 +91,33 @@ bool SHTC3::ReadHumidity(){
     }
     
     if(retour){
-        unsigned int humidity_preleve = (humidity[0]*256)+humidity[1];
-        int humidity_reel = 100 * (humidity_preleve/65536);
+
+        relative_humidity = Humidity_Conversion(humidity[0], humidity[1]);
     }
     
     return retour;
 }
-float SHTC3::testing_the_conversion(unsigned char msb, unsigned char lsb){
+
+float SHTC3::Temperature_Conversion(unsigned char msb, unsigned char lsb){
+    
     unsigned char temp_msb=msb;
     unsigned char temp_lsb=lsb;
+    
     unsigned int temperature_preleve = temp_msb<<8 | temp_lsb;
-    //(temp_msb*256)+temp_lsb;
-    int temperature_reel = 175.0f * (float)temperature_preleve/65535.0f -45.0f;
-    //-45+(175*(temperature_preleve/65536));
-    cout<<"the temperature is : "<<temperature_reel<<" degre celcius"<<endl;
+    float temperature_reel = 175.0f * (float)temperature_preleve/65535.0f -45.0f;
     
     return temperature_reel;
 }
+
+float SHTC3::Humidity_Conversion(unsigned char msb, unsigned char lsb){
+    
+    unsigned char hum_msb=msb;
+    unsigned char hum_lsb=lsb;
+    
+    unsigned int humidity_preleve = hum_msb<<8 | hum_lsb;
+    
+    float humidity_reel = 100 * ((float)humidity_preleve/65536);
+    
+    return humidity_reel;
+}
+
