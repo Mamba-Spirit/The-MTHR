@@ -32,55 +32,52 @@ bool App::InitOK(){
 void App::Init()
 {
     //m_shtc3->Wake_up();
-    //unsigned char configuration;
-    m_shtc3->testing_the_conversion(0x64, 0xA8);
-    // Lecture de la configuration courante
-    //***************************************************************************
-   // if (m_shtc3->ReadConfiguration(configuration))
-     //  cout << "Configuration avant modification: 0x"
-       //      << hex << (int)configuration <<endl;
-    //else ExitError("Erreur lors de la lecture de la configuration du SHTC3");
-    //***************************************************************************
-//
-//    // configuration résolution 12 bits
-//    if (!m_shtc3->SetResolution(12))
-//        ExitError("Erreur selection de la résolution dans le SHTC3");
-        
+    float The_temperature;
+    float The_humidity;
     
-
-   /* // Lecture de la configuration courante
-    if (m_shtc3->ReadConfiguration(configuration))
-        cout << "Configuration après modification: 0x"
-             << hex << (int)configuration <<endl;
-    else ExitError("Erreur lecture de la configuration du SHTC3");
-
-    // Début de la conversion de T°
-    if (!m_shtc3->StartConvert())
-        ExitError("Erreur lors du démarrage de la conversion de Température");*/
+    if(m_shtc3->Read_the_temperature(The_temperature) && m_shtc3->ReadHumidity(The_humidity)){
+        
+        cout << "Valeur décimale de la Température = "<<The_temperature<<"°C"<<endl;
+        cout << "Valeur décimale de l'humidité = "<<The_humidity<<" %"<<endl;
+        
+    }
+    
+    else{
+        
+        ExitError("Erreur lors de la lecture de la température et de l'humidité");
+    }
+    //m_shtc3->Temperature_Conversion(0x64, 0xA8);  //Testing the conversion function
 }
 
 void App::Loop()
 {
-    /*bool lecture_demandee=false;
+    bool lecture_demandee=false;
     string reponse="";
-    float temperature;
+    float The_temperature;
+    float The_humidity;
 
-    // boucle de lecture
     do
     {
-        // on lit la T°
-        if (m_shtc3->ReadTemperature(temperature))
-            cout << "Valeur décimale de la Température = "<<temperature<<endl;
-        else
-            ExitError("Erreur lors de la la lecture de la température");
+        if(m_shtc3->Read_the_temperature(The_temperature) && m_shtc3->ReadHumidity(The_humidity)){
+            
+            cout << "Valeur décimale de la Température = "<<The_temperature<<"°C"<<endl;
+            cout << "Valeur décimale de l'humidité = "<<The_humidity<<" %"<<endl;
+        }
+        else{
+            
+            ExitError("Erreur lors de la lecture de la température et de l'humidité");
+        }
 
-        // autre lecture ?
-        lecture_demandee=false;
-        cout << "Autre lecture (o/n)? ";
-        cin >> reponse;
-        if (reponse=="o") lecture_demandee=true;
+            cout << "Autre lecture (o/n)? ";
+            cin >> reponse;
+            if (reponse=="o"){
+                
+                lecture_demandee=true;
+            }
+            else
+                lecture_demandee = false;
     }
-    while (lecture_demandee);*/
+    while (lecture_demandee);
 }
 
 
