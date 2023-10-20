@@ -16,3 +16,5 @@ sensitive to humidity and temperature.
  * The Raspberry Pi: The Raspberry Pi is used to run the software ventilation and heating control software. It receives data from the SHTC3 sensor via the      I2C link and sends commands to the and heating actuators.
  * Ventilation actuator (green LED): The ventilation actuator can be used used to control ventilation speed according to SHTC3 data. The green LED lights       up to indicate that ventilation is on. running.
  * Heating actuator (red LED): The heating actuator can be used to control temperature based on sensor data. The red LED lights up to indicate that             heating is on.
+# displaying shtc3 data on the website.
+This feature is not ready, that going to be ready in the coming days.(very soon).
