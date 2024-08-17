@@ -2,8 +2,7 @@
  * Name:      AccesI2C.cpp
  * Projet:    AccesI2C
  * utilité:   Bibliothèque  permettant d'accéder au bus I²C sur raspberry PI
- * Author:    Éric Laly (elaly@free.fr)
- * Created:   2021-10-16
+ * Author:    Axel NGANDU BISEBA
  ******************************************************************************/
 #include "AccesI2C.h"
 
