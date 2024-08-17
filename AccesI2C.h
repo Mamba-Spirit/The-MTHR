@@ -2,8 +2,7 @@
  * Name:      AccesI2C.h
  * Projet:    AccesI2C
  * utilité:   Bibliothèque  permettant d'accéder au bus I2C sur raspberry PI
- * Author:    Éric Laly (elaly@free.fr)
- * Created:   2021-10-16
+ * Author:    Axel NGANDU BISEBA
  ******************************************************************************/
 #ifndef ACCESI2C_H
 #define ACCESI2C_H
